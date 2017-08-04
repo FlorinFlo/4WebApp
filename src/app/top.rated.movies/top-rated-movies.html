@@ -1,8 +1,10 @@
-<p>Hello</p> 
-<div class="row"> 
-    <div class="col-xs-11 col-md-6 img" style="position: relative" *ngFor="let movie of listOfMovies|async " (click)="selectMovie(movie)" [style.backgroundImage]="'url('+getImage(movie)+')'">
-        <div style="position: absolute; text-align: center;background-color: black;bottom: 0 ; right: 40%">            
-            <p style="vertical-align: middle;">{{movie.title}}</p>
+<div class="well" style="margin: 5px">
+    <div class="row">
+        <div class="col-xs-12 col-md-6 img" style="position: relative" *ngFor="let movie of listOfMovies|async " (click)="selectMovie(movie)"
+            [style.backgroundImage]="'url('+getImage(movie)+')'">
+            <div style="position: relative; text-align: center;background-color: black;bottom: -90% ">
+                <p style="vertical-align: middle;">{{movie.title}}</p>
+            </div>
         </div>
-    </div> 
- </div> 
+    </div>
+</div>

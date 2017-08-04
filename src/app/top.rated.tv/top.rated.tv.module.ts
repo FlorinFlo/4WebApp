@@ -1,19 +1,22 @@
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
-import { TopRatedMovies } from './top-rated-movies';
+import { TopRatedTV } from './top.ratedTV';
+// import { TopRatedMovies } from './top-rated-movies';
 import { NgModule } from '@angular/core';
 import { DataService } from '../service/data.service';
-import { MovieRoutingModule } from './top-rated.routing.module';
+import { TVRoutingModule } from './top.rated.tv.routing.module';
+// import { MovieRoutingModule } from './top-rated.routing.module';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
-import { MovieDetail } from './movie.detail.component';
+
+// import { MovieDetail } from './movie.detail.component';
 
 
 @NgModule({
     declarations: [
-        TopRatedMovies,
-        MovieDetail,       
+         TopRatedTV
+        // MovieDetail,
 
     ],
     imports: [
@@ -21,7 +24,7 @@ import { MovieDetail } from './movie.detail.component';
         FormsModule,
         CommonModule,
         HttpClientModule,
-        MovieRoutingModule
+        TVRoutingModule
       
 
 
@@ -29,5 +32,4 @@ import { MovieDetail } from './movie.detail.component';
     providers: [DataService],
 
 })
-export class TopRatedMoviesComponent { }
-
+export class TopRatedTVComponent { }

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 
 
 
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -9,11 +10,15 @@ import { Component } from '@angular/core';
   providers: []
 })
 export class AppComponent {
-  
+ 
   title = 'Movie web app';
-  
 
-  ngOnInit(){
-   
+
+  ngOnInit() {
+
   }
+
+ 
+
+
 }

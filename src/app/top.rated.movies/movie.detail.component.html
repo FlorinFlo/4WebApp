@@ -1,1 +1,23 @@
-<p>Movie detail</p>
+<div *ngIf="movie" class="well" style="display: block">
+    <div class="row">
+        <div class="col-md-2 col-xs-1" style="margin-bottom: 5px">
+            <input id="backButton" class="btn btn-prime" type="button" value="Go back" (click)="goBackToTopRated()">
+        </div>
+        <div class="col-md-8 col-xs-10">
+            <h2>{{movie.title}}</h2>
+            <p style="text-align:justify">{{movie.overview}}</p>
+            <div style="text-align:left !important" *ngIf="movieDetails">Genres :
+                <div style="display: inline-block;margin :1px" *ngFor="let gen of movieDetails['genres']">
+                    {{gen.name}}/
+                </div>
+                <div style="white-space: pre-line">
+                    Popularity: {{movieDetails['popularity']}} Release date: {{movieDetails["release_date"]}}
+                </div>
+                <div>done</div>
+            </div>
+        </div>
+        <div class="col-md-2 col-xs-1">
+
+        </div>
+    </div>
+</div>

@@ -1,13 +1,14 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    {{title}}
-  </h1>
- 
-</div>
-<nav>
- <a routerLink="/topRatedMovies" routerLinkActive="active">Top Rated Movies</a>
+ <div style="display: block;text-align:center">
+  <div style="text-align:center">    
+    <h1>
+      {{title}}
+    </h1>
 
-</nav>
-    <router-outlet></router-outlet>
-
+  </div>
+  <nav style="margin-bottom: 10px">
+    <a routerLink="/topRatedMovies" routerLinkActive="active"><button class="btn btn-primary">Top Rated Movies</button> </a>
+    <a routerLink="/topRatedTv" routerLinkActive="active"><button class="btn btn-primary">Top Rated TV</button> </a>
+  </nav>
+  <router-outlet></router-outlet>
+ </div>
