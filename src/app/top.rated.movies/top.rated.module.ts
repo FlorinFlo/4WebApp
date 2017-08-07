@@ -21,8 +21,7 @@ import { MovieDetail } from './movie.detail.component';
         FormsModule,
         CommonModule,
         HttpClientModule,
-        MovieRoutingModule
-      
+        MovieRoutingModule      
 
 
     ],

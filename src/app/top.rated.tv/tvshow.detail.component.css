@@ -1,0 +1,12 @@
+@media only screen and (max-width: 500px){
+   #backButton{   
+    background:url('./backButton.png');
+    background-size: cover ;
+    border: none;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    color: transparent;
+    
+}
+}

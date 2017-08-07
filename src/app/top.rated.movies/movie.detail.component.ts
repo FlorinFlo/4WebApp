@@ -27,7 +27,7 @@ export class MovieDetail implements OnInit {
 
         this.route.paramMap
             .switchMap((params: ParamMap) =>
-                this.service.getMovie(params.get('id'))).
+                this.service.getMovieOrTvShow(params.get('id'),"movie")).
             subscribe((movie: any) => this.movie = movie);
 
     }
@@ -35,7 +35,7 @@ export class MovieDetail implements OnInit {
     ngDoCheck() {
 
         if (this.movie != null && !this.calledGetMovieDetail) {            
-             this.service.getMovieDetail(this.movie['id']).then((data) => {
+             this.service.getDetail(this.movie['id'],"movie").then((data) => {
                  this.movieDetails = data;                
              });
              this.calledGetMovieDetail=true;

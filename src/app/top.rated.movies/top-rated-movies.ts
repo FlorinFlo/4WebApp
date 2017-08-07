@@ -14,16 +14,18 @@ import { AppComponent } from '../app.component';
     styleUrls: ['./top-rated-movies.css']
 
 })
+
+
+
 export class TopRatedMovies implements OnInit {
 
 
     listOfMovies: Observable<any[]>;
-    private selectedId: number;
+    private selectedMovieId: number;
+    
 
-    configuration: any;
-
-
-    constructor(private service: DataService, private route: ActivatedRoute, private router: Router, private appcomponetn: AppComponent) { }
+// private appcomponetn: AppComponen
+    constructor(private service: DataService, private route: ActivatedRoute, private router: Router) { }
 
     ngOnInit() {
 
@@ -33,12 +35,12 @@ export class TopRatedMovies implements OnInit {
             this.listOfMovies = this.route.paramMap
                 .switchMap((params: ParamMap) => {
                     // (+) before `params.get()` turns the string into a number
-                    this.selectedId = +params.get('id');
-                    return this.service.getTopRatedMovies();
+                    this.selectedMovieId = +params.get('id');
+                    return this.service.getTopRated("Movie");
                 });
 
         }
-        this.configuration = this.service.getConfiguration();
+        
 
 
 
@@ -52,7 +54,7 @@ export class TopRatedMovies implements OnInit {
 
     getImage(movie: any) {
 
-        return this.service.getImage(movie.poster_path, this.configuration[3]);
+        return this.service.getImage(movie.poster_path, this.service.configuration[3]);
     }
 
 

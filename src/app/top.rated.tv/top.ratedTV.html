@@ -1,1 +1,11 @@
-<p>top rated TV</p>
+<div class="well" style="margin: 5px">
+    <div class="row">
+        <div class="col-md-6 col-xs-12 img" *ngFor="let tvShow of topRatedTv|async" [style.backgroundImage]="'url('+getTvShowImage(tvShow)+')'"
+            (click)=selectTvShow(tvShow)>
+            <div style="position: relative; text-align: center;background-color: black;bottom: -90% ">
+                <p style="vertical-align: middle;">{{tvShow.name}}</p>
+            </div>
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,14 @@
+<div class="well">
+    <div>
+        <input class="form-control" type="text" placeholder="Search" (keyup)="searchForString($event)" />
+        <div *ngIf="">
+        </div>
+    </div>
+    <div>
+        <input type="radio"  name="searchType" [(ngModel)]="checked" value="movie" (click)="uncheck($event)" >Movies
+        <input type="radio" name="searchType" [(ngModel)]="checked"  value="tv" (click)="uncheck($event)" >Tv shows
+    </div>
+    <div *ngFor="let result of searchResult|async">
+        <div> {{result.title}}  {{result.name}}  {{result.first_air_date}}  </div> 
+    </div>
+</div>

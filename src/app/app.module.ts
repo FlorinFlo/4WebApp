@@ -12,6 +12,7 @@ import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { MovieDetail } from './top.rated.movies/movie.detail.component';
 import { TopRatedTVComponent } from './top.rated.tv/top.rated.tv.module';
+import { SearchComponent } from './search/search.module';
 
 
 
@@ -30,6 +31,7 @@ import { TopRatedTVComponent } from './top.rated.tv/top.rated.tv.module';
     HttpClientModule,
     TopRatedMoviesComponent,
     TopRatedTVComponent,
+    SearchComponent,
     RouterModule,
     AppRoutingModule
   ],

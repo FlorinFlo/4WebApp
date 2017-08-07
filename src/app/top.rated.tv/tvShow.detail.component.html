@@ -1,0 +1,24 @@
+<div *ngIf="tvShow" class="well" style="display: block">
+    <div class="row">
+        <div class="col-md-2 col-xs-1" style="margin-bottom: 5px">
+            <input id="backButton" class="btn btn-prime" type="button" value="Go back" (click)="goBackToTopRated()">
+        </div>
+        <div class="col-md-8 col-xs-10">
+            <h2>{{tvShow.name}}</h2>
+            <p style="text-align:justify">{{tvShow.overview}}</p>
+            <div style="text-align:left !important" *ngIf="tvShowDetails">Genres :
+                <div style="display: inline-block;margin :1px" *ngFor="let gen of tvShowDetails['genres']">
+                    {{gen.name}}/
+                </div>
+                <div style="white-space: pre-line;display:block">                    
+                    Popularity: {{tvShowDetails['popularity']}}
+                    First air date date: {{tvShowDetails["first_air_date"]}}
+                </div>
+                <div>done</div>
+            </div>
+        </div>
+        <div class="col-md-2 col-xs-1">
+
+        </div>
+    </div>
+</div>

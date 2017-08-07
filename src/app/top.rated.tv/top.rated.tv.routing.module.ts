@@ -2,12 +2,12 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { TopRatedTV } from './top.ratedTV'
 
-// import { MovieDetail } from './movie.detail.component'
+ import { TvShowDetail } from './tvShow.detail.component'
 
 
 const tvsRoutes: Routes = [
-  { path: 'topRatedTv', component: TopRatedTV }
-//   { path: 'movie/:id', component: MovieDetail }
+  { path: 'topRatedTv', component: TopRatedTV },
+   { path: 'tvShow/:id', component: TvShowDetail }
   
 ];
 
