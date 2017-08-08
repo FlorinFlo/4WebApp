@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
  import { SeachdMoviesOrTvShows } from './search.component';
+ import { CustomPagination }  from './pagination.component';
 // import { MovieDetail } from './movie.detail.component'
 
 

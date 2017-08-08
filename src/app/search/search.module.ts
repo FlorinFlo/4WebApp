@@ -9,26 +9,32 @@ import { SearchRoutingModule } from "./search.routing.module";
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
+import { NgxPaginationModule } from 'ngx-pagination';
+
+
 
 
 
 @NgModule({
     declarations: [
         SeachdMoviesOrTvShows
-               
-
+       
     ],
     imports: [
         BrowserModule,
         FormsModule,
         CommonModule,
         HttpClientModule,
-        SearchRoutingModule      
+        NgxPaginationModule,
+        SearchRoutingModule,
+        
+       
+
 
 
     ],
     providers: [DataService],
 
 })
- export class SearchComponent { }
+export class SearchComponent { }
 

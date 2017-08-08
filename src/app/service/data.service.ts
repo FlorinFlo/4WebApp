@@ -67,6 +67,7 @@ export class DataService {
     }
 
     getImage(poster_path: string, size: string) {
+       
         if (size != null && poster_path != null) {
 
             return this.tmdb.getImageUrl(poster_path, size)

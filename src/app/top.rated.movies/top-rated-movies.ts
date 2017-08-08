@@ -22,7 +22,8 @@ export class TopRatedMovies implements OnInit {
 
     listOfMovies: Observable<any[]>;
     private selectedMovieId: number;
-    
+   
+   
 
 // private appcomponetn: AppComponen
     constructor(private service: DataService, private route: ActivatedRoute, private router: Router) { }
@@ -35,6 +36,7 @@ export class TopRatedMovies implements OnInit {
             this.listOfMovies = this.route.paramMap
                 .switchMap((params: ParamMap) => {
                     // (+) before `params.get()` turns the string into a number
+                   
                     this.selectedMovieId = +params.get('id');
                     return this.service.getTopRated("Movie");
                 });
@@ -45,6 +47,8 @@ export class TopRatedMovies implements OnInit {
 
 
     }
+
+    
 
     selectMovie(movie: any) {
 

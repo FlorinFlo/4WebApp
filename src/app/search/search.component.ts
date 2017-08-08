@@ -8,6 +8,8 @@ import { AppComponent } from '../app.component';
 
 
 
+
+
 @Component({
     selector: `search`,
     templateUrl: `./search.component.html`,
@@ -15,74 +17,103 @@ import { AppComponent } from '../app.component';
 
 })
 
-
-
 export class SeachdMoviesOrTvShows {
 
     checked;
     selected: string = ' ';
-    isChecked: boolean = false;
-    searchResult:Observable<any[]>;
-    selectedId:number;
-    titleSearch:string;
-    beforeChecked:any;
+    typeIsChecked: boolean = false;
+    searchResult: Observable<any[]>;
+    selectedId: number;
+    beforeChecked: any;
+    count: number = 1;
+    searchString: string = "";
+    p: string =' 1';
 
     constructor(private service: DataService, private route: ActivatedRoute, private router: Router) { }
 
-    searchForString(event: KeyboardEvent) {
-        let tempString: string = '';
-        tempString = (<HTMLInputElement>event.target).value;
-        if (tempString.length > 3) {
-            if (this.isChecked) {
-                console.log(this.selected+"is checked"+this.isChecked);
-                // Search for selected -- movie or tv show
-              this.searchResult= this.route.paramMap
-                .switchMap((params: ParamMap) => {
-                    // (+) before `params.get()` turns the string into a number
-                    this.selectedId = +params.get('id');
-                    return this.service.search(this.selected,tempString);
-                });
+    pageChange(event) {
+        this.p = event;
 
-            } else {
-                 console.log(this.selected+"is checked"+this.isChecked+"multi");
-                //multi search
-               this.searchResult= this.route.paramMap
-                .switchMap((params: ParamMap) => {
-                    // (+) before `params.get()` turns the string into a number
-                    this.selectedId = +params.get('id');
-                    return this.service.search('multi',tempString);
-                });
-                
-            }
+        this.router.navigate(['search'], { queryParams: { page: this.p } });
 
-            
-        }else{
-            this.searchResult=null;
-        }
-
-
+    }
+    ngOnInit(){
 
     }
 
-    uncheck(event) {
+    searchForString(event: KeyboardEvent) {
+        this.searchString = (<HTMLInputElement>event.target).value;
+        this.getMapRouting(this.searchString, this.typeIsChecked);
+
+    }
+
+   
+
+    selectOrDeselectSearchType(event) {
 
         this.selected = event.target.value;
-        if(this.beforeChecked==event.target){
-            console.log(this.beforeChecked+">>> same"+event.target.value );
-            this.isChecked = !this.isChecked;
-        }else{
-            console.log(this.beforeChecked+">>> diff"+ event.target.value);
-            this.beforeChecked=event.target;
+
+        if (this.beforeChecked == event.target) {
+            this.count++;
+        } else {
+
+            this.beforeChecked = event.target;
+            this.count = 1;
         }
-       
+
         if (this.checked == event.target.value) {
             this.checked = false;
         }
-        
-        
+
+        if (this.count % 2 == 0) {
+            this.typeIsChecked = false;
+        } else {
+            this.typeIsChecked = true;
+        }
+
+        this.getMapRouting(this.searchString, this.typeIsChecked);
 
     }
 
 
+    getMapRouting(searchString: string, specific: boolean) {
+
+        let typeOfSearch = this.selected;
+
+        if (!specific) {
+            typeOfSearch = "multi";
+        }
+
+        if (this.searchString.length > 3) {
+
+            this.searchResult = this.route.paramMap
+                .switchMap((params: ParamMap) => {
+                    // (+) before `params.get()` turns the string into a number
+                    this.selectedId = +params.get('id');
+                    return this.service.search(typeOfSearch, searchString);
+                });
+
+            
+
+
+
+        } else {
+            this.searchResult = null;
+        }
+
+    }
+
+    getImage(result:any){
+
+        if(this.service.getImage(result.poster_path, this.service.configuration[3])==null){
+            return "https://pvsmt99345.i.lithium.com/t5/image/serverpage/image-id/10546i3DAC5A5993C8BC8C?v=1.0";//to do search image url localy
+        }
+        return this.service.getImage(result.poster_path, this.service.configuration[3]);
+    }
 
 }
+
+// For routing through pages in pagination 
+// this.route.paramMap
+//       .map(params => params.get('page'))
+//       .subscribe(page => this.config.currentPage = page);

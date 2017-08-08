@@ -1,0 +1,26 @@
+ .my-pagination /deep/  .ngx-pagination {
+    padding: 0px;
+    margin-top: 10px;    
+}
+.searchType{
+    margin: 10px;
+}
+
+.img {
+    position: relative;
+    background-position: 50% 10%;
+    background-repeat:   no-repeat;
+    background-size:     cover;
+    padding: 10px;   
+    max-width: 100%;
+    height: 200px;
+    width: 100%;
+    transform: scale(0.9, 0.9);    
+}
+
+
+@media (max-resolution: 1dppx) {
+   .img{
+       max-width: 50%;
+   }
+}

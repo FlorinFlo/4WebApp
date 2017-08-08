@@ -24,15 +24,17 @@ export class MovieDetail implements OnInit {
     constructor(private service: DataService, private route: ActivatedRoute, private router: Router) { }
 
     ngOnInit() {
-
+        
         this.route.paramMap
             .switchMap((params: ParamMap) =>
+           
                 this.service.getMovieOrTvShow(params.get('id'),"movie")).
             subscribe((movie: any) => this.movie = movie);
 
     }
 
     ngDoCheck() {
+
 
         if (this.movie != null && !this.calledGetMovieDetail) {            
              this.service.getDetail(this.movie['id'],"movie").then((data) => {
